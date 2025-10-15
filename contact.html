@@ -131,11 +131,20 @@
       color: rgb(98, 199, 61);
     }
 
+    /* ---------- CONTACT LINKS WITH IMAGE ---------- */
+    .contact-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      animation: fadeInUp 1.5s ease forwards;
+    }
+
     .links {
       display: flex;
       flex-direction: column;
       gap: 18px;
-      animation: fadeInUp 1.5s ease forwards;
     }
 
     .links a {
@@ -154,6 +163,16 @@
       color: rgb(0, 214, 50);
       animation: glowPulse 1.2s infinite alternate;
       transform: translateY(-3px);
+    }
+
+    .sitting-img {
+      width: 180px;
+      height: auto;
+      transition: transform 0.3s ease;
+    }
+
+    .sitting-img:hover {
+      transform: scale(1.05);
     }
 
     @keyframes glowPulse {
@@ -187,6 +206,11 @@
         top: 10px;
       }
 
+      .contact-container {
+        flex-direction: column;
+        gap: 25px;
+      }
+
       .links a {
         width: 100%;
       }
@@ -209,14 +233,16 @@
 
   <main>
     <h1>RWAY</h1>
-    <div class="links">
-      <a href="https://www.instagram.com/r.wayyyz/" target="_blank">Instagram</a>
-      <a href="https://t.me/rong_polojoy" target="_blank">Telegram</a>
-      <a href="https://www.tiktok.com/@yourusername" target="_blank">TikTok</a>
+    <div class="contact-container">
+      <div class="links">
+        <a href="https://instagram.com/yourusername" target="_blank">Instagram</a>
+        <a href="https://t.me/yourusername" target="_blank">Telegram</a>
+        <a href="https://www.tiktok.com/@yourusername" target="_blank">TikTok</a>
+      </div>
+      <img src="sitting.png" alt="Sitting Character" class="sitting-img">
     </div>
   </main>
 
   <footer>© 2025 RWAY — Local buddy for comfy clothing</footer>
 </body>
 </html>
-
