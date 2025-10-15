@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | RWAY</title>
+  <link rel="icon" href="log.png">
+
+  <!-- Minecraft Font -->
+  <link href="https://fonts.cdnfonts.com/css/minecraftia" rel="stylesheet">
+
+  <style>
+    /* ---------- BASE ---------- */
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #6a6a6a;
+      color: #e0e0e0;
+      font-family: 'Minecraftia', monospace;
+      display: flex;
+      flex-direction: column;
+      letter-spacing: 1px;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* ---------- NOISE BACKGROUND ---------- */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: url("https://www.transparenttextures.com/patterns/noise.png");
+      opacity: 0.08;
+      pointer-events: none;
+    }
+
+    /* ---------- NAVBAR ---------- */
+    nav {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      background-color: #6a6a6a;
+      padding: 10px 40px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo img {
+      height: 40px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      margin-left: 30px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #e0e0e0;
+      transition: 0.3s;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+    }
+
+    .nav-right {
+      position: absolute;
+      top: 10px;
+      right: 40px;
+    }
+
+    .nav-right img {
+      height: 32px;
+      width: 32px;
+      display: block;
+    }
+
+    /* ---------- MAIN CONTENT ---------- */
+    main {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      animation: fadeInUp 1s ease forwards;
+      padding: 40px 20px;
+    }
+
+    @keyframes fadeInUp {
+      0% {opacity: 0; transform: translateY(20px);}
+      100% {opacity: 1; transform: translateY(0);}
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+      color: #cfcfcf;
+      text-shadow: 2px 2px #2a2a2a;
+      position: relative;
+    }
+
+    h1::after {
+      content: "®";
+      font-size: 0.8rem;
+      position: absolute;
+      top: -8px;
+      right: -15px;
+      color: rgb(98, 199, 61);
+    }
+
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      animation: fadeInUp 1.5s ease forwards;
+    }
+
+    .links a {
+      text-decoration: none;
+      color: #ffffff;
+      background-color: #717171;
+      padding: 12px 26px;
+      border: 1px solid #8a8a8a;
+      border-radius: 8px;
+      transition: 0.3s ease;
+      letter-spacing: 1px;
+    }
+
+    .links a:hover {
+      background-color: #919191;
+      color: rgb(0, 214, 50);
+      animation: glowPulse 1.2s infinite alternate;
+      transform: translateY(-3px);
+    }
+
+    @keyframes glowPulse {
+      0%, 100% {box-shadow: 0 0 5px rgb(77, 223, 77);}
+      50% {box-shadow: 0 0 20px rgb(87, 237, 130);}
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      opacity: 0.4;
+      padding: 20px;
+      border-top: 1px solid #333;
+      margin-top: auto;
+      letter-spacing: 2px;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 600px) {
+      nav {
+        padding: 10px 20px;
+      }
+
+      .nav-links {
+        margin-left: 15px;
+      }
+
+      .nav-right {
+        right: 20px;
+        top: 10px;
+      }
+
+      .links a {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">
+      <img src="logo.png" alt="RWAY Logo">
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+    <div class="nav-right">
+      <img src="star.gif" alt="Star Icon">
+    </div>
+  </nav>
+
+  <main>
+    <h1>RWAY</h1>
+    <div class="links">
+      <a href="https://instagram.com/yourusername" target="_blank">Instagram</a>
+      <a href="https://t.me/yourusername" target="_blank">Telegram</a>
+      <a href="https://www.tiktok.com/@yourusername" target="_blank">TikTok</a>
+    </div>
+  </main>
+
+  <footer>© 2025 RWAY — Local buddy for comfy clothing</footer>
+</body>
+</html>

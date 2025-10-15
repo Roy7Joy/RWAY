@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RWAY</title>
+  <link rel="icon" href="log.png">
+
+  <!-- Minecraft Font -->
+  <link href="https://fonts.cdnfonts.com/css/minecraftia" rel="stylesheet">
+
+  <style>
+    /* ---------- BASE ---------- */
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #6a6a6a;
+      color: #e0e0e0;
+      font-family: 'Minecraftia', monospace;
+      display: flex;
+      flex-direction: column;
+      letter-spacing: 1px;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: url("https://www.transparenttextures.com/patterns/noise.png");
+      opacity: 0.08;
+      pointer-events: none;
+    }
+
+    /* ---------- NAVBAR ---------- */
+    nav {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #6a6a6a;
+      padding: 10px 40px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo img {
+      height: 40px;
+      width: auto;
+      display: block;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      margin-left: 30px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #e0e0e0;
+      transition: 0.3s;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+    }
+
+    /* ---------- STAR ICON ---------- */
+    .nav-right img {
+      height: 35px;
+      width: auto;
+      display: block;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .nav-right img:hover {
+      transform: rotate(10deg) scale(1.1);
+    }
+
+    /* ---------- CONTAINER ---------- */
+    .container {
+      max-width: 1100px;
+      margin: 60px auto 40px;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 25px;
+      flex-grow: 1;
+    }
+
+    /* ---------- PRODUCT CARD ---------- */
+    .product {
+      background-color: #7e7e7e;
+      border-radius: 10px;
+      text-align: center;
+      padding: 20px;
+      transition: 0.3s;
+      position: relative;
+      height: 380px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    /* 👇 Delay each card slightly for staggered entry */
+    .product:nth-child(1) { animation-delay: 0.1s; }
+    .product:nth-child(2) { animation-delay: 0.3s; }
+    .product:nth-child(3) { animation-delay: 0.5s; }
+    .product:nth-child(4) { animation-delay: 0.7s; }
+
+    .product:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 15px rgb(77, 223, 77);
+    }
+
+    @keyframes fadeInUp {
+      0% {opacity: 0; transform: translateY(20px);}
+      100% {opacity: 1; transform: translateY(0);}
+    }
+
+    .product img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      transition: transform 0.3s ease;
+    }
+
+    .product:hover img {
+      transform: scale(1.03);
+    }
+
+    .product h3 {
+      font-size: 1rem;
+      margin: 8px 0 5px;
+    }
+
+    .price {
+      font-size: 0.9rem;
+      color: #7fff7f;
+      margin-bottom: 6px;
+    }
+
+    .amount {
+      font-size: 0.85rem;
+      opacity: 0.7;
+      margin-bottom: 6px;
+    }
+
+    .status {
+      display: inline-block;
+      font-size: 0.8rem;
+      margin-top: 4px;
+      padding: 4px 10px;
+      border-radius: 5px;
+    }
+
+    .instock {
+      background-color: #163d16;
+      color: #7fff7f;
+      border: 1px solid #257325;
+    }
+
+    .outofstock {
+      background-color: #c14d4d;
+      color: #eaeaea;
+      border: 1px solid #732525;
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      opacity: 0.4;
+      padding: 20px;
+      border-top: 1px solid #333;
+      margin-top: auto;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 1000px) {
+      .container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 10px 15px;
+      }
+
+      .nav-links {
+        gap: 15px;
+      }
+
+      .nav-right img {
+        height: 30px;
+      }
+
+      .container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">
+      <img src="logo.png" alt="RWAY Logo">
+      <div class="nav-links">
+        <a href="contact.html">Contact</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+    <div class="nav-right">
+      <img src="star.gif" alt="Star Icon">
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="product">
+      <img src="b1.png" alt="RWAY Beanie">
+      <h3>GR4Y</h3>
+      <div class="price">$5.00</div>
+      <div class="amount">0 / 10</div>
+      <span class="status outofstock">Coming soon!</span>
+    </div>
+
+    <div class="product">
+      <img src="b2.png" alt="RWAY Hoodie">
+      <h3>BABY BLU3</h3>
+      <div class="price">$5.00</div>
+      <div class="amount">0 / 10</div>
+      <span class="status outofstock">Coming soon!</span>
+    </div>
+
+    <div class="product">
+      <img src="b3.png" alt="RWAY Cap">
+      <h3>OR4NGE</h3>
+      <div class="price">$5.00</div>
+      <div class="amount">0 / 5</div>
+      <span class="status outofstock">Coming soon!</span>
+    </div>
+
+    <div class="product">
+      <img src="b4.png" alt="RWAY Tee">
+      <h3>P1NK</h3>
+      <div class="price">$5.00</div>
+      <div class="amount">0 / 5</div>
+      <span class="status outofstock">Coming soon!</span>
+    </div>
+  </div>
+
+  <footer>© 2025 RWAY — Local buddy for comfy clothing</footer>
+</body>
+</html>
