@@ -11,15 +11,9 @@
 
   <style>
     /* ---------- BASE ---------- */
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
+    html, body { height: 100%; margin: 0; padding: 0; }
 
     body {
       background-color: #6a6a6a;
@@ -61,11 +55,7 @@
       gap: 15px;
     }
 
-    .logo img {
-      height: 40px;
-      width: auto;
-      display: block;
-    }
+    .logo img { height: 40px; width: auto; display: block; }
 
     .nav-links {
       display: flex;
@@ -80,9 +70,7 @@
       font-size: 0.9rem;
     }
 
-    .nav-links a:hover {
-      color: #fff;
-    }
+    .nav-links a:hover { color: #fff; }
 
     .nav-right {
       position: absolute;
@@ -90,22 +78,23 @@
       right: 40px;
     }
 
-    .nav-right img {
-      height: 32px;
-      width: 32px;
-      display: block;
-    }
+    .nav-right img { height: 32px; width: 32px; display: block; }
 
     /* ---------- MAIN CONTENT ---------- */
     main {
       flex-grow: 1;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
+      flex-direction: row; /* side by side */
+      align-items: flex-start;
+      justify-content: space-between;
       padding: 60px 20px;
-      max-width: 900px;
+      max-width: 1000px;
       margin: 0 auto;
+      gap: 30px;
+    }
+
+    .text-content {
+      flex: 1;
     }
 
     h1 {
@@ -113,18 +102,14 @@
       margin-bottom: 30px;
       color: #cfcfcf;
       text-shadow: 2px 2px #2a2a2a;
-      position: relative;
-      text-align: center;
+      text-align: left;
       animation: fadeInUp 1s ease forwards;
     }
 
-    h1::after {
-      content: "®";
-      font-size: 0.8rem;
-      position: absolute;
-      top: -8px;
-      right: -15px;
+    h1 .brand {
+      font-size: 2rem;
       color: rgb(98, 199, 61);
+      margin-left: 2px; /* small gap */
     }
 
     p {
@@ -144,17 +129,18 @@
       animation: fadeInUp 1s ease forwards;
     }
 
-    p:nth-child(2) {
-      animation-delay: 0.3s;
-    }
+    p:nth-child(2) { animation-delay: 0.3s; }
+    p:nth-child(3) { animation-delay: 0.6s; }
 
-    p:nth-child(3) {
-      animation-delay: 0.6s;
-    }
+    p span { color: rgb(0, 214, 50); font-weight: bold; }
 
-    p span {
-      color: rgb(0, 214, 50);
-      font-weight: bold;
+    main img {
+      height: auto;
+      width: 100%; /* fill height of text */
+      max-width: 400px;
+      border-radius: 10px;
+      align-self: stretch; /* match height of text-content */
+      object-fit: cover;
     }
 
     @keyframes fadeInUp {
@@ -162,12 +148,6 @@
       100% {opacity: 1; transform: translateY(0);}
     }
 
-    @keyframes glowPulse {
-      0%, 100% {box-shadow: 0 0 5px rgb(77, 223, 77);}
-      50% {box-shadow: 0 0 20px rgb(87, 237, 130);}
-    }
-
-    /* ---------- FOOTER ---------- */
     footer {
       text-align: center;
       font-size: 0.8rem;
@@ -179,27 +159,11 @@
     }
 
     /* ---------- RESPONSIVE ---------- */
-    @media (max-width: 600px) {
-      nav {
-        padding: 10px 20px;
-      }
-
-      .nav-links {
-        margin-left: 15px;
-      }
-
-      .nav-right {
-        right: 20px;
-        top: 10px;
-      }
-
-      main {
-        padding: 40px 15px;
-      }
-
-      p {
-        padding: 15px;
-      }
+    @media (max-width: 768px) {
+      main { flex-direction: column; align-items: center; }
+      main img { width: 70%; margin-top: 20px; align-self: center; }
+      h1 { text-align: center; }
+      p { text-align: center; }
     }
   </style>
 </head>
@@ -218,11 +182,13 @@
   </nav>
 
   <main>
-    <h1>About RWAY</h1>
-    <p>Welcome to <span>RWAY</span> — a fresh streetwear brand born from my love for <span>comfy, cool fashion (sick)</span>. Affordable clothing with styles loy loy.</p>
-    <p>Every product in my collection is carefully chosen to combine <span>trendiness</span> with <span>comfort</span>. From cozy clothing to sleek streetwear essentials, RWAY is here to make sure you look (steav khob) and feel great in every outfit.</p>
-    <p>Join me on this journey, and experience <span>comfy, cool streetwear</span> that’s designed to fit your 168 lifestyle. 🙏 </p>
-    <img src="me.png">
+    <div class="text-content">
+      <h1>About RWAY<span class="brand">®</span></h1>
+      <p>Welcome to <span>RWAY</span> — a fresh streetwear brand born from my love for <span>comfy, cool fashion (sick)</span>. Affordable clothing with styles loy loy.</p>
+      <p>Every product in my collection is carefully chosen to combine <span>trendiness</span> with <span>comfort</span>. From cozy clothing to sleek streetwear essentials, RWAY is here to make sure you look (steav khob) and feel great in every outfit.</p>
+      <p>Join me on this journey, and experience <span>comfy, cool streetwear</span> that’s designed to fit your 168 lifestyle. 🙏 </p>
+    </div>
+    <img src="me.png" alt="Me Image">
   </main>
 
   <footer>© 2025 RWAY — Local buddy for comfy clothing</footer>
