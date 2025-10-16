@@ -12,9 +12,7 @@
   <style>
     /* ---------- BASE ---------- */
     * { box-sizing: border-box; }
-
     html, body { height: 100%; margin: 0; padding: 0; }
-
     body {
       background-color: #6a6a6a;
       color: #e0e0e0;
@@ -24,6 +22,7 @@
       letter-spacing: 1px;
       overflow-x: hidden;
       position: relative;
+      min-height: 100vh;
     }
 
     body::before {
@@ -48,54 +47,30 @@
       top: 0;
       z-index: 10;
     }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-
+    .logo { display: flex; align-items: center; gap: 15px; }
     .logo img { height: 40px; width: auto; display: block; }
-
-    .nav-links {
-      display: flex;
-      gap: 25px;
-      margin-left: 30px;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: #e0e0e0;
-      transition: 0.3s;
-      font-size: 0.9rem;
-    }
-
+    .nav-links { display: flex; gap: 25px; margin-left: 30px; }
+    .nav-links a { text-decoration: none; color: #e0e0e0; transition: 0.3s; font-size: 0.9rem; }
     .nav-links a:hover { color: #fff; }
-
-    .nav-right {
-      position: absolute;
-      top: 10px;
-      right: 40px;
-    }
-
+    .nav-right { position: absolute; top: 10px; right: 40px; }
     .nav-right img { height: 32px; width: 32px; display: block; }
 
     /* ---------- MAIN CONTENT ---------- */
     main {
       flex-grow: 1;
       display: flex;
-      flex-direction: row; /* side by side */
+      flex-direction: row;
       align-items: flex-start;
       justify-content: space-between;
       padding: 60px 20px;
       max-width: 1000px;
       margin: 0 auto;
       gap: 30px;
+      z-index: 1;
+      position: relative;
     }
 
-    .text-content {
-      flex: 1;
-    }
+    .text-content { flex: 1; }
 
     h1 {
       font-size: 2rem;
@@ -105,12 +80,7 @@
       text-align: left;
       animation: fadeInUp 1s ease forwards;
     }
-
-    h1 .brand {
-      font-size: 2rem;
-      color: rgb(98, 199, 61);
-      margin-left: 2px; /* small gap */
-    }
+    h1 .brand { font-size: 2rem; color: rgb(98, 199, 61); margin-left: 2px; }
 
     p {
       font-size: 1rem;
@@ -128,26 +98,49 @@
       transform: translateY(20px);
       animation: fadeInUp 1s ease forwards;
     }
-
     p:nth-child(2) { animation-delay: 0.3s; }
     p:nth-child(3) { animation-delay: 0.6s; }
-
     p span { color: rgb(0, 214, 50); font-weight: bold; }
 
     main img {
       height: auto;
-      width: 100%; /* fill height of text */
+      width: 100%;
       max-width: 400px;
       border-radius: 10px;
-      align-self: stretch; /* match height of text-content */
+      align-self: stretch;
       object-fit: cover;
     }
 
-    @keyframes fadeInUp {
-      0% {opacity: 0; transform: translateY(20px);}
-      100% {opacity: 1; transform: translateY(0);}
+    @keyframes fadeInUp { 0% {opacity:0; transform:translateY(20px);} 100% {opacity:1; transform:translateY(0);} }
+
+    /* ---------- ROAD FOOTER WITH RUNNING SONIC ---------- */
+    .road-footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: url('road.jpg') bottom center / cover no-repeat;
+      z-index: 5;
+    }
+    .running-sonic {
+      position: absolute;
+      bottom: 70px;
+      left: -160px;
+      height: 70px;
+      image-rendering: pixelated;
+      animation: runAcross 10s linear infinite;
+      z-index: 10;
+    }
+    @keyframes runAcross {
+      0% { left: -160px; transform: scaleX(1); }
+      49% { left: 100%; transform: scaleX(1); }
+      50% { left: 100%; transform: scaleX(-1); }
+      99% { left: -160px; transform: scaleX(-1); }
+      100% { left: -160px; transform: scaleX(1); }
     }
 
+    /* ---------- FOOTER ---------- */
     footer {
       text-align: center;
       font-size: 0.8rem;
@@ -156,14 +149,34 @@
       border-top: 1px solid #333;
       margin-top: auto;
       letter-spacing: 2px;
+      position: relative;
+      z-index: 1;
     }
 
     /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 1000px) {
+      .road-footer { height: 60px; }
+      .running-sonic { height: 40px; bottom: 50px; }
+    }
     @media (max-width: 768px) {
       main { flex-direction: column; align-items: center; }
       main img { width: 70%; margin-top: 20px; align-self: center; }
       h1 { text-align: center; }
       p { text-align: center; }
+    }
+    @media (max-width: 600px) {
+      nav { flex-wrap: wrap; justify-content: space-between; padding: 10px 15px; }
+      .nav-links { gap: 15px; }
+      .nav-right img { height: 30px; }
+      .road-footer { height: 60px; }
+      .running-sonic { height: 40px; bottom: 50px; left: -80px; animation-duration: 14s; }
+      @keyframes runAcross {
+        0% { left: -80px; transform: scaleX(1); }
+        49% { left: 100%; transform: scaleX(1); }
+        50% { left: 100%; transform: scaleX(-1); }
+        99% { left: -80px; transform: scaleX(-1); }
+        100% { left: -80px; transform: scaleX(1); }
+      }
     }
   </style>
 </head>
@@ -183,13 +196,18 @@
 
   <main>
     <div class="text-content">
-      <h1>About RWAY<span class="brand">®</span></h1>
-      <p>Welcome to <span>RWAY</span> — a fresh streetwear brand born from my love for <span>comfy, cool fashion (sick)</span>. Affordable clothing with styles loy loy.</p>
-      <p>Every product in my collection is carefully chosen to combine <span>trendiness</span> with <span>comfort</span>. From cozy clothing to sleek streetwear essentials, RWAY is here to make sure you look (steav khob) and feel great in every outfit.</p>
+      <h1>About RWAY <img src="cool-emoji.gif" style="width: 35px;"></h1>
+      <p>Welcome to <span>RWAY</span> — a fresh streetwear store born from my love for <span>comfy, cool fashion (kleb jeb)</span>. Affordable clothing with styles loy loy.</p>
+      <p>Every product in my stock is carefully chosen to combine <span>trendiness</span> with <span>comfort</span>. From cozy clothing to sleek streetwear essentials, RWAY is here to make sure you look (steav khob) and feel great in every outfit.</p>
       <p>Join me on this journey, and experience <span>comfy, cool streetwear</span> that’s designed to fit your 168 lifestyle. 🙏 </p>
     </div>
     <img src="me.png" alt="Me Image">
   </main>
+
+  <!-- ROAD FOOTER WITH RUNNING SONIC -->
+  <div class="road-footer">
+    <img src="ta.gif" alt="Running Sonic" class="running-sonic">
+  </div>
 
   <footer>© 2025 RWAY — Local buddy for comfy clothing</footer>
 </body>
