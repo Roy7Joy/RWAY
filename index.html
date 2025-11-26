@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>RWAY</title>
+  <title>SLIX6</title>
   <link rel="icon" href="log.png">
 
   <!-- Minecraft Font -->
@@ -53,15 +53,20 @@
     .nav-right img:hover { transform: rotate(10deg) scale(1.1); }
 
     /* ---------- PRODUCT CONTAINER ---------- */
-    .container {
+      .container {
       max-width: 1100px;
       margin: 60px auto 40px;
       padding: 20px;
+
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+      justify-items: center;
+      justify-content: center;
       gap: 25px;
       flex-grow: 1;
-    }
+      }
+
     .product {
       background-color: #7e7e7e;
       border-radius: 10px;
@@ -78,10 +83,10 @@
       animation: fadeInUp 1s ease forwards;
     }
     .product:nth-child(1) { animation-delay: 0.1s; }
-    .product:nth-child(2) { animation-delay: 0.2s; }
-    .product:nth-child(3) { animation-delay: 0.3s; }
-    .product:nth-child(4) { animation-delay: 0.4s; }
-    .product:hover { transform: translateY(-6px); box-shadow: 0 0 15px rgb(77, 223, 77); }
+    .product:nth-child(2) { animation-delay: 0.1s; }
+    .product:nth-child(3) { animation-delay: 0.1s; }
+    .product:nth-child(4) { animation-delay: 0.1s; }
+    .product:hover { transform: translateY(-6px); box-shadow: 0 0 15px rgb(134, 215, 134); }
     @keyframes fadeInUp { 0% {opacity:0; transform:translateY(20px);} 100% {opacity:1; transform:translateY(0);} }
 
     .product img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 12px; transition: transform 0.3s ease; }
@@ -91,7 +96,7 @@
     .amount { font-size: 0.85rem; opacity: 0.7; margin-bottom: 6px; }
     .status { display: inline-block; font-size: 0.8rem; margin-top: 4px; padding: 4px 10px; border-radius: 5px; }
     .instock { background-color: #163d16; color: #7fff7f; border: 1px solid #257325; }
-    .outofstock { background-color: #c14d4d; color: #eaeaea; border: 1px solid #732525; }
+    .outofstock { background-color: #2acd3d; color: #eaeaea; }
 
     /* ---------- ROAD FOOTER ---------- */
     .road-footer {
@@ -154,7 +159,7 @@
 <body>
   <nav>
     <div class="logo">
-      <img src="logo.png" alt="RWAY Logo">
+      <img src="qw.png" alt="RWAY Logo">
       <div class="nav-links">
         <a href="contact.html">Contact</a>
         <a href="about.html">About</a>
@@ -170,29 +175,15 @@
       <img src="b1.png" alt="RWAY Beanie">
       <h3>GR4Y</h3>
       <div class="price">$5.00</div>
-      <div class="amount">0 / 10</div>
-      <span class="status outofstock">Coming soon!</span>
+      <div class="amount">10 / 10</div>
+      <span class="status outofstock">IN-STOCK</span>
     </div>
     <div class="product">
       <img src="b2.png" alt="RWAY Hoodie">
       <h3>BABY BLU3</h3>
       <div class="price">$5.00</div>
-      <div class="amount">0 / 10</div>
-      <span class="status outofstock">Coming soon!</span>
-    </div>
-    <div class="product">
-      <img src="b3.png" alt="RWAY Cap">
-      <h3>OR4NGE</h3>
-      <div class="price">$5.00</div>
-      <div class="amount">0 / 5</div>
-      <span class="status outofstock">Coming soon!</span>
-    </div>
-    <div class="product">
-      <img src="b4.png" alt="RWAY Tee">
-      <h3>P1NK</h3>
-      <div class="price">$5.00</div>
-      <div class="amount">0 / 5</div>
-      <span class="status outofstock">Coming soon!</span>
+      <div class="amount">10 / 10</div>
+      <span class="status outofstock">IN-STOCK</span>
     </div>
   </div>
 
